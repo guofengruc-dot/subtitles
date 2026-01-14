@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片字幕生成器 - 电影台词拼接风格</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>图片字幕生成器</h1>
+            <p>上传图片，输入多行文字，自动生成电影台词拼接风格的长图。</p>
+        </header>
+
+        <main class="workspace">
+            <!-- 左侧控制面板 -->
+            <aside class="controls">
+                <div class="control-group">
+                    <label class="btn-upload">
+                        选择图片
+                        <input type="file" id="imageInput" accept="image/*">
+                    </label>
+                    <span id="fileName" class="file-name">未选择文件</span>
+                </div>
+
+                <div class="control-group grid-2">
+                    <div>
+                        <label for="subtitleHeight">字幕区域高度 (px)</label>
+                        <input type="number" id="subtitleHeight" value="80" min="20">
+                    </div>
+                    <div>
+                        <label for="fontSize">字体大小 (px)</label>
+                        <input type="number" id="fontSize" value="32" min="10">
+                    </div>
+                </div>
+
+                <div class="control-group grid-2">
+                    <div>
+                        <label for="fontColor">字体颜色</label>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="fontColor" value="#ffffff">
+                            <span class="color-value">#ffffff</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="strokeColor">描边颜色</label>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="strokeColor" value="#000000">
+                            <span class="color-value">#000000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group grid-2">
+                    <div>
+                        <label for="strokeWidth">描边粗细 (px)</label>
+                        <input type="number" id="strokeWidth" value="2" min="0">
+                    </div>
+                    <div>
+                        <label for="lineGap">切割线高度 (px)</label>
+                        <input type="number" id="lineGap" value="2" min="0">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="subtitleText">字幕内容 (每行对应一张切片)</label>
+                    <textarea id="subtitleText" rows="6" placeholder="第一行字幕&#10;第二行字幕&#10;第三行字幕...">别吵
+我在给自己写钓鱼网站呢
+对，这年头
+咱们猫咪都能自己写代码了</textarea>
+                </div>
+
+                <div class="actions">
+                    <button id="downloadBtn" class="btn-primary" disabled>保存图片</button>
+                </div>
+            </aside>
+
+            <!-- 右侧预览区域 -->
+            <section class="preview">
+                <div class="canvas-container">
+                    <canvas id="canvas"></canvas>
+                    <div id="placeholder" class="placeholder">
+                        <div class="icon">🖼️</div>
+                        <p>请上传图片开始制作</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
